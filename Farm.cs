@@ -2,49 +2,36 @@
 {
     public class Farm
     {
-        public List<Rabbit> Rabbits;
-        public List<Chicken> Chickens;
-        public Farm()
+        public void FarmMenu()
         {
-            Rabbits = new List<Rabbit>();
-            Chickens = new List<Chicken>();
-        }
-        public void AddChicken(Chicken chicken)
-        {
-            Chickens.Add(chicken);
-        }
-        public void RemoveChicken(Chicken chicken)
-        {
-            Chickens.Remove(chicken);
-        }
+            Console.WriteLine($"Что будем делать?:\nПроведать курицу Gale - 1 \nПроведать курицу Hanna - 2\nПроведать кролика Harry - 3\nПроведать кролика Anny - 4");
+            string? input1 = Console.ReadLine();
+            Chicken ChickenGale = new("Gale", 0);
+            Chicken ChickenJenya = new("Hanna", 0);
+            Rabbit RabbitHarry = new("Harry", new Random().Next(3, 6));
+            Rabbit RabbitAnny = new("Anny", new Random().Next(3, 6));
 
-        public void AddRabbit(Rabbit rabbit)
-        {
-            Rabbits.Add(rabbit);
-        }
-        public void RemoveRabbit(Rabbit rabbit)
-        {
-            Rabbits.Remove(rabbit);
-        }
-
-        public void Info()
-        {
-            Console.WriteLine($"Информация о ферме: ");
-            Console.WriteLine();
-            int eggs = 0;
-            foreach (var chicken in Chickens)
+            if (input1 == "1")
             {
-                eggs += chicken.Eggs;
-                Console.WriteLine($"Кура {chicken.Name} несет {chicken.Eggs} яиц.");
+                ChickenGale.Doing();
             }
-
-            Console.WriteLine();
-            double meat = 0;
-            foreach (var rabbit in Rabbits)
+            else if (input1 == "2")
             {
-                meat += rabbit.Weight;
-                Console.WriteLine($"Кролик {rabbit.Name} даст {rabbit.Weight} кг мяса.");
+                ChickenJenya.Doing();
             }
-        }
+            else if (input1 == "3")
+            {
+                RabbitHarry.Doing();
+            }
+            else if (input1 == "4")
+            {
+                RabbitAnny.Doing();
+            }
+            else
+            {
+                Console.WriteLine("Неверный ввод!");
+            }
+        }        
+
     }
 }
